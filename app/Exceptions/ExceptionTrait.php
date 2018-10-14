@@ -15,16 +15,15 @@ trait ExceptionTrait
                 'errors' => 'Product Model not found'
             ], Response::HTTP_NOT_FOUND);
         }
-
-        if ($this->isHttp($exception))
-        {
-            return response()->json([
-                'errors' => 'Your URL is not valid'
-            ], Response::HTTP_NOT_FOUND);
-        }
+            if ($this->isHttp($exception))
+            {
+                return response()->json([
+                    'errors' => 'Your URL is not valid'
+                ], Response::HTTP_NOT_FOUND);
+            }
+                return parent::render($request, $exception);
     }
 
-        return parent::render($request, $exception);
 
 
     public function isModel($exception) {
